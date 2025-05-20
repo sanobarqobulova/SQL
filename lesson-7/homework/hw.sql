@@ -60,3 +60,41 @@ avg(SaleAmount) as avg_sale,
 sum(SaleAmount) as sum_sale
 from Sales
 group by ProductID, SaleAmount;
+
+--12.Write a query to count the number of employees from the Department HR.
+select count(EmployeeID) as co_empl
+from Employees
+where DepartmentName='HR';
+select * from Employees;
+
+--13.Write a query that finds the highest and lowest Salary by department in the Employees table.(DeptID is enough, if you don't have DeptName).
+select DEpartmentName, Salary,
+max(Salary) as max_sal,
+min(Salary) as min_sal
+from Employees
+group by  DEpartmentName, Salary;
+
+--14.Write a query to calculate the average salary per Department.(DeptID is enough, if you don't have DeptName).
+select DEpartmentName,
+avg(Salary) from Employees
+group by  DEpartmentName;
+
+--15.Write a query to show the AVG salary and COUNT(*) of employees working in each department.(DeptID is enough, if you don't have DeptName).
+select DEpartmentName,
+avg(Salary),
+count(*)
+from Employees
+group by  DEpartmentName;
+
+--16.Write a query to filter product categories with an average price greater than 400.
+select Category,
+avg(Price) as avg_pr
+from Products
+group by Category
+having avg(Price)>400;
+
+--17.Write a query that calculates the total sales for each year in the Sales table.
+select year(SaleDate),
+sum (SaleAmount) as total_sale
+ from Sales
+ group by SaleDate;
