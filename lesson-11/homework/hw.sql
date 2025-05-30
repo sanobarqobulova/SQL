@@ -80,3 +80,11 @@ where year(s.SaleDate)=2023 and p.StockQuantity>=100
 --Tables Used: Employees, Departments
 select e.Name,d.DepartmentName, e.HireDate from Employees as e left join Departments as d on d.DepartmentID=e.DepartmentID
 where year (e.HireDate)>2020 or d.DepartmentName='Sales'
+
+ --Hard-Level Tasks (7)
+--Return: CustomerName, OrderID, Address, OrderDate
+--Task: List all orders made by customers in the USA whose address starts with 4 digits.
+--Tables Used: Customers, Orders
+select concat(c.FirstName, ' ', c.LastName)as name, c.Country, c.Address from Customers as c 
+join Orders as o on  c.CustomerID=o.CustomerID
+where c.Address like'[0-9][0-9][0-9][0-9] %' 
